@@ -1,4 +1,6 @@
 node {
+    
+    
     stage('Code Checkout'){
       git credentialsId: 'githubcreds', url: 'https://github.com/Tharaniyadev/SpringBoot.git'  
     }
@@ -18,7 +20,7 @@ node {
     
     stage("Docker"){
         withCredentials([string(credentialsId: 'dockerHubcred', variable: 'dockerHubCreds')]) {
-        sh 'sudo docker login -u tharaniyadev -p ${dockerHubcred}'
+        sh 'sudo docker login -u tharaniyadev -p ${dockerHubCreds}'
 }
 sh 'sudo docker push tharaniyadev/bootcampjenkin:1.0.0.0'
     }
