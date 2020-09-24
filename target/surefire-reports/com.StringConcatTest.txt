@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.StringConcatTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.312 s - in com.StringConcatTest
