@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  docker-mysql:
+
+    restart: always
+
+    container_name: docker-mysql
+
+    image: mysql    
+
+    volumes:
+
+      - ./sql:/docker-entrypoint-initdb.d
+
+
+    ports:
+
+      - "6033:3306"   
+
+
+  springboot-app:
+
+    restart: on-failure
+
+    build: ./
+
+    expose:
+
+     - "8886"
+
+    ports:
+
+      - 8886:8096
+
+    environment:
+
+      WAIT_HOSTS: mysql:3306
+
+    depends_on:
+
+      - docker-mysql
