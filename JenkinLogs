@@ -1,0 +1,447 @@
+Started by user Tharaniya
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/CaseStudy_SpringBoot
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Code Checkout)
+[Pipeline] git
+The recommended git tool is: NONE
+using credential githubcreds
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Tharaniyadev/BootCamp_SpringBoot.git # timeout=10
+Fetching upstream changes from https://github.com/Tharaniyadev/BootCamp_SpringBoot.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+using GIT_ASKPASS to set credentials githubcreds
+ > git fetch --tags --progress -- https://github.com/Tharaniyadev/BootCamp_SpringBoot.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 05bf516a36d6530acaa5811b1baf46af40e60603 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 05bf516a36d6530acaa5811b1baf46af40e60603 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 05bf516a36d6530acaa5811b1baf46af40e60603 # timeout=10
+Commit message: "Updated file"
+ > git rev-list --no-walk 05bf516a36d6530acaa5811b1baf46af40e60603 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build, Test and Package)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven-3/bin/mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.devops:cicd-pipeline >----------------------
+[INFO] Building cicd-pipeline 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ cicd-pipeline ---
+[INFO] Deleting /var/lib/jenkins/workspace/CaseStudy_SpringBoot/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ cicd-pipeline ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ cicd-pipeline ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /var/lib/jenkins/workspace/CaseStudy_SpringBoot/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ cicd-pipeline ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CaseStudy_SpringBoot/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ cicd-pipeline ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /var/lib/jenkins/workspace/CaseStudy_SpringBoot/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ cicd-pipeline ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ScoreAndGradeTest
+14:23:11.086 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+14:23:11.129 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+14:23:11.167 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.ScoreAndGradeTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+14:23:11.195 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.ScoreAndGradeTest], using SpringBootContextLoader
+14:23:11.203 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.ScoreAndGradeTest]: class path resource [com/ScoreAndGradeTest-context.xml] does not exist
+14:23:11.204 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.ScoreAndGradeTest]: class path resource [com/ScoreAndGradeTestContext.groovy] does not exist
+14:23:11.205 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.ScoreAndGradeTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+14:23:11.206 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ScoreAndGradeTest]: ScoreAndGradeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:23:11.320 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.ScoreAndGradeTest]
+14:23:11.514 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/CaseStudy_SpringBoot/target/classes/com/Application.class]
+14:23:11.551 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.Application for test class com.ScoreAndGradeTest
+14:23:11.725 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.ScoreAndGradeTest]: using defaults.
+14:23:11.727 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+14:23:11.756 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/TransactionDefinition]
+14:23:11.757 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+14:23:11.763 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@55f616cf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1356d4d4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@c03cf28, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1329eff, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6497b078, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@41c2284a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@53aad5d5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@46fa7c39, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1fb700ee, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4f67eb2a]
+14:23:11.782 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4ef37659 testClass = ScoreAndGradeTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@776b83cc testClass = ScoreAndGradeTest, locations = '{}', classes = '{class com.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@52e677af, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@341b80b2, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@17c386de, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f3b5d16], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+14:23:11.839 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2020-10-06 14:23:12.467  INFO 1686 --- [           main] com.ScoreAndGradeTest                    : Starting ScoreAndGradeTest on ip-172-31-33-215 with PID 1686 (started by jenkins in /var/lib/jenkins/workspace/CaseStudy_SpringBoot)
+2020-10-06 14:23:12.478  INFO 1686 --- [           main] com.ScoreAndGradeTest                    : No active profile set, falling back to default profiles: default
+2020-10-06 14:23:17.452  INFO 1686 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-06 14:23:17.677  INFO 1686 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2020-10-06 14:23:18.065  INFO 1686 --- [           main] com.ScoreAndGradeTest                    : Started ScoreAndGradeTest in 6.191 seconds (JVM running for 8.331)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.618 s - in com.ScoreAndGradeTest
+[INFO] Running com.MessageServiceTest
+2020-10-06 14:23:18.523  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MessageServiceTest], using SpringBootContextLoader
+2020-10-06 14:23:18.529  INFO 1686 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.MessageServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-10-06 14:23:18.531  INFO 1686 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.MessageServiceTest]: MessageServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-10-06 14:23:18.541  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.Application for test class com.MessageServiceTest
+2020-10-06 14:23:18.555  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2020-10-06 14:23:18.556  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@124dac75, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@315105f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7b61bf11, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@40247d48, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3ff54f3d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@14c93774, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@62a68bcb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@18b74ea, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@14924f41, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@493da830]
+hello
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s - in com.MessageServiceTest
+[INFO] Running com.StringConcatTest
+2020-10-06 14:23:18.596  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.StringConcatTest], using SpringBootContextLoader
+2020-10-06 14:23:18.601  INFO 1686 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.StringConcatTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-10-06 14:23:18.603  INFO 1686 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.StringConcatTest]: StringConcatTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-10-06 14:23:18.609  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.Application for test class com.StringConcatTest
+2020-10-06 14:23:18.618  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2020-10-06 14:23:18.619  INFO 1686 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1f939a0f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@45658133, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@430b2699, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@67536ae0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6413d7e7, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@d16be4f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@17b37e9a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6bcb12e6, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@111d5c97, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@29c17c3d]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s - in com.StringConcatTest
+2020-10-06 14:23:18.755  INFO 1686 --- [       Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.1.2:jar (default-jar) @ cicd-pipeline ---
+[INFO] Building jar: /var/lib/jenkins/workspace/CaseStudy_SpringBoot/target/cicd-pipeline-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.1.7.RELEASE:repackage (repackage) @ cicd-pipeline ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.1.7.RELEASE:repackage (default) @ cicd-pipeline ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.158 s
+[INFO] Finished at: 2020-10-06T14:23:21Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven-3/bin/mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< org.devops:cicd-pipeline >----------------------
+[INFO] Building cicd-pipeline 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ cicd-pipeline ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ cicd-pipeline ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ cicd-pipeline ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CaseStudy_SpringBoot/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ cicd-pipeline ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ cicd-pipeline ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ScoreAndGradeTest
+14:23:28.793 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+14:23:28.820 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+14:23:28.853 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.ScoreAndGradeTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+14:23:28.881 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.ScoreAndGradeTest], using SpringBootContextLoader
+14:23:28.888 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.ScoreAndGradeTest]: class path resource [com/ScoreAndGradeTest-context.xml] does not exist
+14:23:28.889 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.ScoreAndGradeTest]: class path resource [com/ScoreAndGradeTestContext.groovy] does not exist
+14:23:28.890 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.ScoreAndGradeTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+14:23:28.891 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.ScoreAndGradeTest]: ScoreAndGradeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:23:28.980 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.ScoreAndGradeTest]
+14:23:29.186 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/CaseStudy_SpringBoot/target/classes/com/Application.class]
+14:23:29.221 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.Application for test class com.ScoreAndGradeTest
+14:23:29.438 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.ScoreAndGradeTest]: using defaults.
+14:23:29.440 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+14:23:29.456 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/TransactionDefinition]
+14:23:29.461 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+14:23:29.465 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@609db43b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55f616cf, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1356d4d4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@c03cf28, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1329eff, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6497b078, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@41c2284a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@53aad5d5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@46fa7c39, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1fb700ee]
+14:23:29.476 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@44a7bfbc testClass = ScoreAndGradeTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4ef37659 testClass = ScoreAndGradeTest, locations = '{}', classes = '{class com.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@534df152, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@8e0379d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5762806e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3b938003], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+14:23:29.546 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2020-10-06 14:23:30.203  INFO 1822 --- [           main] com.ScoreAndGradeTest                    : Starting ScoreAndGradeTest on ip-172-31-33-215 with PID 1822 (started by jenkins in /var/lib/jenkins/workspace/CaseStudy_SpringBoot)
+2020-10-06 14:23:30.208  INFO 1822 --- [           main] com.ScoreAndGradeTest                    : No active profile set, falling back to default profiles: default
+2020-10-06 14:23:34.788  INFO 1822 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-06 14:23:34.990  INFO 1822 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2020-10-06 14:23:35.383  INFO 1822 --- [           main] com.ScoreAndGradeTest                    : Started ScoreAndGradeTest in 5.809 seconds (JVM running for 7.811)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.144 s - in com.ScoreAndGradeTest
+[INFO] Running com.MessageServiceTest
+2020-10-06 14:23:35.789  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MessageServiceTest], using SpringBootContextLoader
+2020-10-06 14:23:35.794  INFO 1822 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.MessageServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-10-06 14:23:35.795  INFO 1822 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.MessageServiceTest]: MessageServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-10-06 14:23:35.799  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.Application for test class com.MessageServiceTest
+2020-10-06 14:23:35.802  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2020-10-06 14:23:35.814  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2be21396, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@124dac75, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@315105f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7b61bf11, org.springframework.test.context.support.DirtiesContextTestExecutionListener@40247d48, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3ff54f3d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@14c93774, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@62a68bcb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@18b74ea, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@14924f41]
+hello
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in com.MessageServiceTest
+[INFO] Running com.StringConcatTest
+2020-10-06 14:23:35.848  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.StringConcatTest], using SpringBootContextLoader
+2020-10-06 14:23:35.851  INFO 1822 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.StringConcatTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-10-06 14:23:35.851  INFO 1822 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.StringConcatTest]: StringConcatTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-10-06 14:23:35.854  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.Application for test class com.StringConcatTest
+2020-10-06 14:23:35.861  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2020-10-06 14:23:35.862  INFO 1822 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@493da830, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1f939a0f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@45658133, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@430b2699, org.springframework.test.context.support.DirtiesContextTestExecutionListener@67536ae0, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6413d7e7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@d16be4f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@17b37e9a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6bcb12e6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@111d5c97]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s - in com.StringConcatTest
+2020-10-06 14:23:35.973  INFO 1822 --- [       Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.988 s
+[INFO] Finished at: 2020-10-06T14:23:36Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] sh
++ sudo systemctl enable docker
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+[Pipeline] sh
++ sudo /var/lib/jenkins/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker build -t tharaniyadev/bootcampspringboot:1.0.0.0 .
+Sending build context to Docker daemon  17.21MB
+
+Step 1/6 : From openjdk:8-jdk-alpine
+ ---> a3562aa0b991
+Step 2/6 : EXPOSE 8888
+ ---> Using cache
+ ---> ec3dd3673ff4
+Step 3/6 : ARG JAR_FILE=/target/*.jar
+ ---> Using cache
+ ---> 0a7656b27fa8
+Step 4/6 : COPY ${JAR_FILE} app.jar
+ ---> 3ab002f12aa4
+Step 5/6 : ENTRYPOINT ["java", "-jar", "app.jar"]
+ ---> Running in 3bc273acaf0b
+Removing intermediate container 3bc273acaf0b
+ ---> f117ac33c743
+Step 6/6 : MAINTAINER "tharaniyadev"
+ ---> Running in 6ba034331717
+Removing intermediate container 6ba034331717
+ ---> 8870343316b8
+Successfully built 8870343316b8
+Successfully tagged tharaniyadev/bootcampspringboot:1.0.0.0
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (pushing Docker image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withCredentials
+Masking supported pattern matches of $dockerHubCreds
+[Pipeline] {
+[Pipeline] sh
++ sudo /var/lib/jenkins/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker login -u tharaniyadev -p ****
+Login Succeeded
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] sh
++ sudo /var/lib/jenkins/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin/docker push tharaniyadev/bootcampspringboot:1.0.0.0
+The push refers to repository [docker.io/tharaniyadev/bootcampspringboot]
+f6554a68d912: Preparing
+ceaf9e1ebef5: Preparing
+9b9b7f3d56a0: Preparing
+f1b5933fe4b5: Preparing
+9b9b7f3d56a0: Layer already exists
+f1b5933fe4b5: Layer already exists
+ceaf9e1ebef5: Layer already exists
+f6554a68d912: Pushed
+1.0.0.0: digest: sha256:c2afb77bf3dca749bc04c82703c70cf36c40fe95ea89da0faf9172c6e6145d57 size: 1159
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Creating aws ec2 instance with ansible)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] ansiblePlaybook
+[CaseStudy_SpringBoot] $ ansible-playbook SpringBootTask.yml --private-key /var/lib/jenkins/workspace/CaseStudy_SpringBoot/ssh1968760856793682844.key -u Admin
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [ec2-launcher] ************************************************************
+
+TASK [launch ec2] **************************************************************
+[WARNING]: Both option key_name and its alias keypair are set.
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Getting the Host IP)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ aws ec2 describe-instances --query Reservations[*].Instances[*].PublicIpAddress[]
+[Pipeline] echo
+3.137.216.168
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Installing Docker in new instance)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sshagent
+[ssh-agent] Using credentials Private_AWS (Private_AWS)
+[ssh-agent] Looking for ssh-agent implementation...
+[ssh-agent]   Exec ssh-agent (binary ssh-agent on a remote machine)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-2yL56AJYlrby/agent.2129
+SSH_AGENT_PID=2131
+Running ssh-add (command line suppressed)
+Identity added: /var/lib/jenkins/workspace/CaseStudy_SpringBoot@tmp/private_key_6957103887214018619.key (ubuntu@ip-172-31-13-56)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ ssh -o StrictHostKeyChecking=no ubuntu@3.137.216.168 /bin/bash
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 2131 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pull the Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sshagent
+[ssh-agent] Using credentials Private_AWS (Private_AWS)
+[ssh-agent] Looking for ssh-agent implementation...
+[ssh-agent]   Exec ssh-agent (binary ssh-agent on a remote machine)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-cYNffrxtQZCN/agent.2154
+SSH_AGENT_PID=2156
+Running ssh-add (command line suppressed)
+Identity added: /var/lib/jenkins/workspace/CaseStudy_SpringBoot@tmp/private_key_478498679525572949.key (ubuntu@ip-172-31-13-56)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ ssh -o StrictHostKeyChecking=no ubuntu@3.137.216.168 sudo docker pull tharaniyadev/bootcampspringboot:1.0.0.0
+1.0.0.0: Pulling from tharaniyadev/bootcampspringboot
+e7c96db7181b: Already exists
+f910a506b6cb: Already exists
+c2274a1a0e27: Already exists
+d878aefbce9b: Pulling fs layer
+d878aefbce9b: Verifying Checksum
+d878aefbce9b: Download complete
+d878aefbce9b: Pull complete
+Digest: sha256:c2afb77bf3dca749bc04c82703c70cf36c40fe95ea89da0faf9172c6e6145d57
+Status: Downloaded newer image for tharaniyadev/bootcampspringboot:1.0.0.0
+docker.io/tharaniyadev/bootcampspringboot:1.0.0.0
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 2156 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run the Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sshagent
+[ssh-agent] Using credentials Private_AWS (Private_AWS)
+[ssh-agent] Looking for ssh-agent implementation...
+[ssh-agent]   Exec ssh-agent (binary ssh-agent on a remote machine)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-ZjDohYDbFk3g/agent.2182
+SSH_AGENT_PID=2184
+Running ssh-add (command line suppressed)
+Identity added: /var/lib/jenkins/workspace/CaseStudy_SpringBoot@tmp/private_key_2502571910424800914.key (ubuntu@ip-172-31-13-56)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ ssh -o StrictHostKeyChecking=no ubuntu@3.137.216.168 sudo docker run -p 8888:8096 -d tharaniyadev/bootcampspringboot:1.0.0.0
+75ecc1579e2e241f11f61d1bcfd238257d1a750de7972c1e14e93e9816a63f7e
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 2184 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
