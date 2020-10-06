@@ -1,0 +1,149 @@
+
+pipeline {
+  
+  environment{
+       HostIP = "NULL"
+  }
+ 
+  agent any
+  stages {
+    
+    stage('Code Checkout'){
+        steps{
+      git credentialsId: 'githubcreds', url: 'https://github.com/Tharaniyadev/BootCamp_SpringBoot.git'  
+    }
+    }
+    
+  stage("build & SonarQube analysis") {
+           
+            steps {
+                  script{  
+           def mavenHome = tool name: 'maven-3', type: 'maven'
+             withSonarQubeEnv(credentialsId: 'SonarQube_Token') {
+
+                sh "${mavenHome}/bin/mvn clean package sonar:sonar"
+              }}
+                  }
+            }
+    
+   
+
+stage('Build, Test and Package'){
+          steps{
+            script{  
+           def mavenHome = tool name: 'maven-3', type: 'maven'
+              
+      sh "${mavenHome}/bin/mvn clean package"
+       sh "${mavenHome}/bin/mvn test"
+            }
+    }
+ }
+    
+    
+    
+    stage('Build Docker Image'){
+       steps{
+           script{
+                def docker = tool name: 'docker', type: 'dockerTool'
+         
+   sh "sudo systemctl enable docker"
+        sh "sudo ${docker}/bin/docker build -t tharaniyadev/bootcampspringboot:1.0.0.0 ."
+    }
+       }
+    }
+   
+    stage("pushing Docker image"){
+        steps{
+         script{
+                def docker = tool name: 'docker', type: 'dockerTool'
+        withCredentials([string(credentialsId: 'Tharaniyadev', variable: 'dockerHubCreds')]) {
+        sh "sudo ${docker}/bin/docker login -u tharaniyadev -p ${dockerHubCreds}"
+}
+
+sh "sudo ${docker}/bin/docker push tharaniyadev/bootcampspringboot:1.0.0.0"
+    }
+    }
+    }
+    
+  
+    
+   stage('Creating aws ec2 instance with ansible'){
+        steps{
+            script{
+                ansiblePlaybook becomeUser: 'ubuntu', credentialsId: 'AWS_Access', installation: 'ansible', playbook: 'SpringBootTask.yml', sudoUser: 'ubuntu'
+            }
+        }
+        
+    } 
+   
+     
+   
+    stage("Getting the Host IP"){
+        steps{
+            script{
+                
+                def IP = 'aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress[]"'
+                def result = sh script: "${IP}", returnStdout:true
+                def resIP = result.split('"')
+                HostIP=resIP[1]
+                println HostIP
+                
+            }
+        }
+    }
+   
+    
+    stage('Installing Docker in new instance'){
+        steps{
+            script{
+             
+                sshagent(['Private_AWS']) {
+    sh "ssh -o StrictHostKeyChecking=no ubuntu@${HostIP} /bin/bash"
+   
+    
+    
+}
+            }
+        }
+    }
+    
+      stage('Pull the Docker Image'){
+        steps{
+         script{
+             sshagent(['Private_AWS']) {
+             
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@${HostIP} sudo docker pull tharaniyadev/bootcampspringboot:1.0.0.0"
+       
+             }
+    } 
+        }
+    }
+    
+   stage('Run the Docker Image'){
+        steps{
+         script{
+            sshagent(['Private_AWS']) {
+             
+         sh "ssh -o StrictHostKeyChecking=no ubuntu@${HostIP} sudo docker run -p 8888:8096 -d tharaniyadev/bootcampspringboot:1.0.0.0"
+             }
+    } 
+        }
+    }
+  }
+    post {
+always {
+  script {
+    if (currentBuild.result == 'FAILURE'){
+    emailext(
+        subject: "Jenkin Notification",
+        to: "tharaniyakarthika@gmail.com"
+    )
+        }
+    }
+}
+}
+   
+    
+  
+    
+}
